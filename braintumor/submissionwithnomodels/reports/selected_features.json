@@ -1,0 +1,41 @@
+{
+  "candidate_features": [
+    "image_mean_intensity",
+    "image_std_intensity",
+    "image_entropy",
+    "blur_score",
+    "edge_density",
+    "tumor_area_percent",
+    "bbox_area_ratio",
+    "normalized_centroid_x",
+    "normalized_centroid_y",
+    "intensity_contrast",
+    "image_quality_score",
+    "tumor_area_ratio_log",
+    "bbox_area_log",
+    "plane_code"
+  ],
+  "available_features": [
+    "image_mean_intensity",
+    "image_std_intensity",
+    "image_entropy",
+    "blur_score",
+    "edge_density",
+    "image_quality_score",
+    "plane_code"
+  ],
+  "target_binary": "is_tumor",
+  "target_multiclass": "class_id",
+  "dropped_leakage_features": [],
+  "dropped_all_nan_features": [
+    "normalized_centroid_x",
+    "normalized_centroid_y",
+    "intensity_contrast"
+  ],
+  "dropped_constant_features": [
+    "tumor_area_percent",
+    "bbox_area_ratio",
+    "tumor_area_ratio_log",
+    "bbox_area_log"
+  ]
+}

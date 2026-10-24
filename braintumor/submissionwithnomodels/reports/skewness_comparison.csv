@@ -1,0 +1,5 @@
+feature,skewness_before,transformed_feature,skewness_after
+tumor_area_px,4.1836149868075125,tumor_area_px_log,0.2705444692474508
+tumor_area_ratio,2.8898655121646324,tumor_area_ratio_log,2.755609949034153
+bbox_area,3.874994737418887,bbox_area_log,0.2647031880463251
+blur_score,8.599170853590614,blur_score_log,1.7741992185474045

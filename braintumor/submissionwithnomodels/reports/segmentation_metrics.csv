@@ -1,0 +1,2 @@
+trained,model_name,dice,iou,pixel_accuracy,threshold,use_tta,setting,default_threshold_dice,best_epoch,best_val_dice,epochs_ran
+True,deeplabv3_resnet50,0.7927802267462708,0.6918209564893745,0.9895016337549963,0.5,True,default_tta_0.50,0.77679067877836,6,0.7828310268179415,8

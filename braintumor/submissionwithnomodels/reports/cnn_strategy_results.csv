@@ -1,0 +1,9 @@
+strategy_name,use_tta,backbones,run_names,weights,val_accuracy,val_macro_f1
+efficientnet_b0_fold_ensemble,False,"[""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0""]","[""fold_efficientnet_b0_1"", ""fold_efficientnet_b0_2"", ""fold_efficientnet_b0_3"", ""fold_efficientnet_b0_4"", ""fold_efficientnet_b0_5""]","[0.9807093537863989, 0.983794746087167, 0.9827864023856535, 0.9801470995827776, 0.9839934461059123]",0.993,0.9932442775087593
+efficientnet_b0_fold_ensemble_tta,True,"[""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0""]","[""fold_efficientnet_b0_1"", ""fold_efficientnet_b0_2"", ""fold_efficientnet_b0_3"", ""fold_efficientnet_b0_4"", ""fold_efficientnet_b0_5""]","[0.9807093537863989, 0.983794746087167, 0.9827864023856535, 0.9801470995827776, 0.9839934461059123]",0.993,0.9932442775087593
+efficientnet_b0_single_tta,True,"[""efficientnet_b0""]","[""single_efficientnet_b0""]",[1.0],0.985,0.9856942884330113
+efficientnet_b0_single,False,"[""efficientnet_b0""]","[""single_efficientnet_b0""]",[1.0],0.982,0.9830085029217055
+convnext_tiny_single,False,"[""convnext_tiny""]","[""single_convnext_tiny""]",[1.0],0.981,0.9809342284215977
+convnext_tiny_single_tta,True,"[""convnext_tiny""]","[""single_convnext_tiny""]",[1.0],0.978,0.9783559883745231
+resnet18_single_tta,True,"[""resnet18""]","[""single_resnet18""]",[1.0],0.977,0.9778882919111345
+resnet18_single,False,"[""resnet18""]","[""single_resnet18""]",[1.0],0.973,0.9737911384024768

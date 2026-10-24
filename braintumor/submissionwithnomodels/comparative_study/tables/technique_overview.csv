@@ -1,0 +1,8 @@
+Technique,Used in,Purpose,Benefit,If omitted
+Preprocessing before/after grids,EDA and reporting,"Visualize how CLAHE, denoising, edge maps, and mask overlays change the raw MRI before modeling.",Creates report-ready evidence for data quality and preprocessing impact.,Your report loses visual proof of what the pipeline changed before training.
+No-regression artifact retention,Classical ML and segmentation,Keep the strongest deployed artifact even when a more advanced variant underperforms.,Maximizes delivered performance.,A weaker tuned model can replace a stronger baseline.
+Multiple pretrained CNN backbones,CNN classification,Benchmark multiple architectures instead of relying on one model family.,Improves the chance of finding a better feature extractor.,A stronger backbone may be missed.
+Weighted focal loss,CNN classification and segmentation,Focus learning on harder or underrepresented examples.,Often improves robustness and class balance behavior.,The model can under-focus on difficult cases.
+Fold ensemble,CNN classification,Average multiple independently trained fold members.,Reduces variance and can recover small performance gains.,Single-model noise can remain in final inference.
+Weighted ensemble and TTA,CNN classification and segmentation,Average predictions across models and augmented views.,Improves robustness without changing labels or data collection.,Final predictions may be less stable.
+Pretrained encoder segmentation model,Segmentation,Compare the handcrafted U-Net with a stronger pretrained architecture.,Can improve mask quality through richer image features.,Segmentation performance may stay limited by a smaller architecture.

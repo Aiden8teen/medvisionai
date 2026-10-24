@@ -1,0 +1,6 @@
+run_name,backbone_name,best_epoch,best_val_f1,epochs_ran
+fold_efficientnet_b0_1,efficientnet_b0,5,0.9807093537863989,6
+fold_efficientnet_b0_2,efficientnet_b0,6,0.983794746087167,6
+fold_efficientnet_b0_3,efficientnet_b0,4,0.9827864023856535,6
+fold_efficientnet_b0_4,efficientnet_b0,6,0.9801470995827776,6
+fold_efficientnet_b0_5,efficientnet_b0,5,0.9839934461059123,6

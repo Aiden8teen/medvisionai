@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4865ff"/>
+      <stop offset="100%" stop-color="#2d3eb0"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#grad)"/>
+  <!-- Modern Clinical Cross / Neural Intersection -->
+  <path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6V7z" fill="#f8f3eb" opacity="0.95"/>
+  <circle cx="16" cy="16" r="2.5" fill="#4865ff"/>
+  <circle cx="16" cy="10" r="1.5" fill="#4865ff"/>
+  <circle cx="16" cy="22" r="1.5" fill="#4865ff"/>
+  <circle cx="10" cy="16" r="1.5" fill="#4865ff"/>
+  <circle cx="22" cy="16" r="1.5" fill="#4865ff"/>
+</svg>

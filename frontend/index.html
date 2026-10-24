@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedVisionAI — Clinical Intelligence Platform</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/frontend/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="/frontend/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body>
+  <div class="page-shell">
+    
+    <header class="pill-nav-wrapper">
+      <nav class="pill-nav" aria-label="Primary Clinical Navigation">
+        <a href="#platform" class="brand-cluster" onclick="switchTab('overview'); return false;">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div>
+            <span class="brand-title">MedVisionAI</span>
+            <span class="brand-subtitle">Neuro-Oncology &amp; Histopathology Intelligence</span>
+          </div>
+        </a>
+
+        <div class="nav-links" role="tablist">
+          <button class="nav-pill-btn active" id="tab-btn-overview" role="tab" aria-selected="true" onclick="switchTab('overview')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            Platform
+          </button>
+          <button class="nav-pill-btn" id="tab-btn-brain" role="tab" aria-selected="false" onclick="switchTab('brain')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+            Brain Tumor MRI
+            <span class="nav-pill-badge">BRISC</span>
+          </button>
+          <button class="nav-pill-btn" id="tab-btn-colorectal" role="tab" aria-selected="false" onclick="switchTab('colorectal')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+            Colorectal H&amp;E
+            <span class="nav-pill-badge">9-Class</span>
+          </button>
+          <button class="nav-pill-btn" id="tab-btn-assistant" role="tab" aria-selected="false" onclick="switchTab('assistant')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            AI Assistant
+          </button>
+          <button class="nav-pill-btn" id="tab-btn-appointments" role="tab" aria-selected="false" onclick="switchTab('appointments')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Triage &amp; Consults
+            <span class="nav-pill-badge" id="nav-triage-count">3</span>
+          </button>
+          <button class="nav-pill-btn" id="tab-btn-benchmarks" role="tab" aria-selected="false" onclick="switchTab('benchmarks')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Study &amp; Benchmarks
+          </button>
+        </div>
+
+        <button class="btn-primary" onclick="switchTab('brain')">
+          <span>Run Diagnostic Scan</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    
+    <main id="view-overview" class="view-section">
+      <section class="hero-section">
+        <div class="hero-stack">
+          <div class="info-pill blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>UNIFIED CLINICAL INTELLIGENCE · RADIOLOGY &amp; PATHOLOGY</span>
+          </div>
+          <h1 class="hero-display-title">Humanist clinical intelligence for brain MRI and colorectal pathology.</h1>
+          <p class="hero-lead">
+            A unified decision-support workbench combining 5-fold deep ensemble neuro-oncology classification, U-Net lesion segmentation, radiomic risk triage, and calibrated Vision Transformer histopathology.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="switchTab('brain')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+              <span>Launch Brain Tumor MRI Studio</span>
+            </button>
+            <button class="btn-outline" onclick="switchTab('colorectal')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>Launch Colorectal H&amp;E Studio</span>
+            </button>
+          </div>
+        </div>
+
+        
+        <div class="hero-portraits-row">
+          <div class="circular-halo" onclick="openSampleDirect('brain', 'glioma_axial_t1.jpg')" style="cursor: pointer;">
+            <div class="circular-halo-frame ember">
+              <img src="/static/brain-samples/glioma_axial_t1.jpg" alt="Glioma Axial T1 MRI" />
+            </div>
+            <div class="circular-halo-meta">
+              <div class="circular-halo-title">Glioma · Axial T1</div>
+              <div class="circular-halo-sub">99.3% Ensemble Accuracy · Try Scan →</div>
+            </div>
+          </div>
+
+          <div class="circular-halo" onclick="openSampleDirect('colorectal', 'test_colorectal_adenocarcinoma_epithelium_0.png')" style="cursor: pointer;">
+            <div class="circular-halo-frame blossom">
+              <img src="/static/crc-samples/test_colorectal_adenocarcinoma_epithelium_0.png" alt="Colorectal Adenocarcinoma H&E" />
+            </div>
+            <div class="circular-halo-meta">
+              <div class="circular-halo-title">Adenocarcinoma H&amp;E</div>
+              <div class="circular-halo-sub">ViT Token Grad-CAM · Try Patch →</div>
+            </div>
+          </div>
+
+          <div class="circular-halo" onclick="openSampleDirect('brain', 'pituitary_coronal_sample.png')" style="cursor: pointer;">
+            <div class="circular-halo-frame forest">
+              <img src="/static/brain-samples/pituitary_coronal_sample.png" alt="Pituitary Coronal MRI" />
+            </div>
+            <div class="circular-halo-meta">
+              <div class="circular-halo-title">Pituitary · Coronal</div>
+              <div class="circular-halo-sub">U-Net Lesion Contour · Try Scan →</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section style="margin-bottom: var(--section-gap);">
+        <div class="section-header-centered">
+          <span class="info-pill">DUAL-MODALITY DIAGNOSTIC ENGINES</span>
+          <h2 class="section-headline">Two specialized clinical pipelines under one roof.</h2>
+          <p class="section-subtext">
+            Every upload is routed to a domain-validated architecture—combining deep convolutional and transformer backbones, spatial segmentation, and calibrated uncertainty reporting.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          
+          <div class="tinted-card forest">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="info-pill" style="background: rgba(255,255,255,0.18); color: #fff;">NEURO-ONCOLOGY · BRISC 2025</span>
+              <button class="circle-arrow-btn" onclick="switchTab('brain')" aria-label="Open Brain Tumor MRI Studio">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+            <div>
+              <h3 style="font-size: var(--text-heading); margin-bottom: 12px;">Brain Tumor MRI Classification, Segmentation &amp; Risk Triage</h3>
+              <p style="font-size: var(--text-body); opacity: 0.92; margin-bottom: 20px;">
+                Multi-class classification across <strong>Glioma, Meningioma, Pituitary Adenoma, and Healthy Brain</strong> using a 5-fold EfficientNet-B0 ensemble alongside ConvNeXt-Tiny and ResNet-18 backbones. Paired with U-Net binary tumor contouring, 7 engineered radiomic features, 5 classical ML classifiers, and a 0–100 clinical risk priority score.
+              </p>
+            </div>
+            <div class="white-card" style="padding: 20px; color: var(--color-deep-ink);">
+              <div class="grid-3" style="gap: 12px; text-align: center;">
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">99.3%</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">5-Fold CNN Accuracy</div>
+                </div>
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">98.2%</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">Random Forest F1</div>
+                </div>
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">10,793</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">Curated MRI Slices</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="tinted-card blossom">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="info-pill">HISTOPATHOLOGY · NCT-CRC-HE-100K</span>
+              <button class="circle-arrow-btn" onclick="switchTab('colorectal')" aria-label="Open Colorectal Histopathology Studio">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </button>
+            </div>
+            <div>
+              <h3 style="font-size: var(--text-heading); margin-bottom: 12px;">Colorectal H&amp;E 9-Class Tissue Analysis &amp; Token Grad-CAM</h3>
+              <p style="font-size: var(--text-body); margin-bottom: 20px;">
+                Self-supervised Vision Transformer pathology foundation models (<strong>Lunit DINO ViT-S/8 &amp; Owkin Phikon ViT-B/16</strong>) with temperature-calibrated linear heads. Classifies 9 colorectal tissue types, performs automatic H&amp;E domain verification, scans multi-patch whole-slide mosaics tile by tile, and renders ViT Token Grad-CAM heatmaps.
+              </p>
+            </div>
+            <div class="white-card" style="padding: 20px;">
+              <div class="grid-3" style="gap: 12px; text-align: center;">
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">95.1%</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">9-Class Accuracy</div>
+                </div>
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">100%</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">Tumour Recall</div>
+                </div>
+                <div>
+                  <div class="serif-heading" style="font-size: 28px;">50</div>
+                  <div style="font-size: 12px; color: var(--color-stone);">External Test Patients</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section>
+        <div class="grid-3">
+          <div class="white-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="info-pill blue">EXPLAINABLE AI</span>
+              <button class="circle-arrow-btn" onclick="switchTab('brain')" style="background: var(--color-cream);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <h3 style="font-size: var(--text-heading-sm);">Saliency, U-Net Contours &amp; Token Grad-CAM</h3>
+            <p style="font-size: var(--text-body-sm); color: var(--color-stone);">
+              Every prediction is accompanied by pixel-level visual attribution—combining U-Net probability heatmaps and input-gradient saliency for brain MRIs with transformer patch Grad-CAM for H&amp;E histology.
+            </p>
+          </div>
+
+          <div class="white-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="info-pill petal">CLINICAL COPILOT</span>
+              <button class="circle-arrow-btn" onclick="switchTab('assistant')" style="background: var(--color-cream);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <h3 style="font-size: var(--text-heading-sm);">Medical-Only AI Assistant with Case Attachment</h3>
+            <p style="font-size: var(--text-body-sm); color: var(--color-stone);">
+              Attach any completed Brain MRI or Colorectal H&amp;E analysis directly into a clinical chat session to synthesize multi-model agreement, morphological metrics, and uncertainty factors.
+            </p>
+          </div>
+
+          <div class="white-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="info-pill ember">PRIORITY TRIAGE</span>
+              <button class="circle-arrow-btn" onclick="switchTab('appointments')" style="background: var(--color-cream);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <h3 style="font-size: var(--text-heading-sm);">Specialist Referral &amp; Coordinator Triage Queue</h3>
+            <p style="font-size: var(--text-body-sm); color: var(--color-stone);">
+              Route high-risk glioma or adenocarcinoma cases directly to Neuro-Oncologists, Neuroradiologists, or GI Pathologists with automated urgency prioritization (Urgent → Soon → Routine).
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    
+    <main id="view-brain" class="view-section" style="display: none;">
+      <div class="section-header-centered">
+        <span class="info-pill forest">NEURO-ONCOLOGY DIAGNOSTIC WORKBENCH · BRISC 2025</span>
+        <h1 class="section-headline">Brain Tumor MRI Analysis &amp; Treatment Planning</h1>
+        <p class="section-subtext">
+          Upload an axial, coronal, or sagittal brain MRI or pick a sample below to run our 5-fold CNN ensemble, compare single backbones, contour tumor burden with U-Net, and compute a clinical triage risk score.
+        </p>
+      </div>
+
+      <div class="diagnostic-workspace-grid">
+        
+        <aside class="white-card" style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h3 style="font-size: var(--text-heading-sm); margin-bottom: 6px;">1 · Select or Upload MRI</h3>
+            <p style="font-size: var(--text-caption); color: var(--color-stone);">Supports JPEG, PNG, WebP (T1-weighted Axial, Coronal, Sagittal)</p>
+          </div>
+
+          <label class="upload-dropzone" for="brain-file-input">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-indigo)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div style="font-weight: 500; font-size: 14px;" id="brain-upload-label">Click to upload a Brain MRI slice</div>
+            <div style="font-size: 12px; color: var(--color-stone);">or select a validated clinical sample below</div>
+            <input type="file" id="brain-file-input" accept="image/*" style="display: none;" onchange="handleBrainFileUpload(event)" />
+          </label>
+
+          <div class="control-group" style="margin-bottom: 0;">
+            <label class="control-label" for="brain-backbone-select">
+              <span>Primary CNN Architecture</span>
+              <span style="font-size: 11px; color: var(--color-primary-indigo);">All 4 compared live</span>
+            </label>
+            <select id="brain-backbone-select" class="pill-select">
+              <option value="ensemble">EfficientNet-B0 (5-Fold Ensemble · 99.3%)</option>
+              <option value="efficientnet_b0">EfficientNet-B0 (Single Backbone · 97.9%)</option>
+              <option value="convnext_tiny">ConvNeXt-Tiny (Single Backbone · 97.7%)</option>
+              <option value="resnet18">ResNet-18 (Single Backbone · 96.5%)</option>
+            </select>
+          </div>
+
+          <div class="grid-2" style="gap: 12px;">
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="brain-plane-select">Anatomical Plane</label>
+              <select id="brain-plane-select" class="pill-select">
+                <option value="auto">Auto-detect</option>
+                <option value="axial">Axial</option>
+                <option value="coronal">Coronal</option>
+                <option value="sagittal">Sagittal</option>
+              </select>
+            </div>
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="brain-thresh-input">
+                <span>U-Net Threshold</span>
+                <span id="brain-thresh-val">0.35</span>
+              </label>
+              <input type="range" id="brain-thresh-input" min="0.15" max="0.75" step="0.05" value="0.35" style="margin-top: 12px; accent-color: var(--color-primary-indigo);" oninput="document.getElementById('brain-thresh-val').textContent = parseFloat(this.value).toFixed(2)" />
+            </div>
+          </div>
+
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; cursor: pointer;">
+            <input type="checkbox" id="brain-tta-check" checked style="width: 18px; height: 18px; accent-color: var(--color-primary-indigo);" />
+            <span>Enable Test-Time Augmentation (Horizontal Flip TTA)</span>
+          </label>
+
+          <button class="btn-primary" id="brain-run-btn" style="width: 100%;" onclick="runBrainAnalysis()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Analyze Brain MRI Now</span>
+          </button>
+
+          <div>
+            <div class="control-label" style="margin-bottom: 10px;">
+              <span>Or Try a BRISC 2025 Sample MRI</span>
+              <span style="font-size: 11px; color: var(--color-stone);">Click to analyze</span>
+            </div>
+            <div class="samples-grid" id="brain-samples-container"></div>
+          </div>
+        </aside>
+
+        
+        <section id="brain-results-panel" style="display: flex; flex-direction: column; gap: 24px;">
+          
+        </section>
+      </div>
+    </main>
+
+    
+    <main id="view-colorectal" class="view-section" style="display: none;">
+      <div class="section-header-centered">
+        <span class="info-pill petal">COMPUTATIONAL PATHOLOGY · NCT-CRC-HE-100K</span>
+        <h1 class="section-headline">Colorectal Histopathology &amp; Token Grad-CAM</h1>
+        <p class="section-subtext">
+          Upload an H&amp;E tissue patch or whole-slide mosaic to classify 9 colorectal tissue types with calibrated probabilities, domain applicability checks, and ViT Token Grad-CAM overlays.
+        </p>
+      </div>
+
+      <div class="diagnostic-workspace-grid">
+        
+        <aside class="white-card" style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h3 style="font-size: var(--text-heading-sm); margin-bottom: 6px;">1 · Select or Upload H&amp;E Patch</h3>
+            <p style="font-size: var(--text-caption); color: var(--color-stone);">224×224 px at ~20× magnification or multi-patch mosaic</p>
+          </div>
+
+          <label class="upload-dropzone" for="crc-file-input">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-indigo)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div style="font-weight: 500; font-size: 14px;" id="crc-upload-label">Click to upload an H&amp;E tissue image</div>
+            <div style="font-size: 12px; color: var(--color-stone);">PNG, JPEG, TIFF, BMP, WebP</div>
+            <input type="file" id="crc-file-input" accept="image/*" style="display: none;" onchange="handleCrcFileUpload(event)" />
+          </label>
+
+          <div class="grid-2" style="gap: 12px;">
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="crc-mode-select">Scan Mode</label>
+              <select id="crc-mode-select" class="pill-select">
+                <option value="Auto">Auto (Patch / Tile)</option>
+                <option value="Single patch">Single Patch</option>
+                <option value="Tile scan">Tile Scan Grid</option>
+              </select>
+            </div>
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="crc-tile-select">Tile Size (px)</label>
+              <select id="crc-tile-select" class="pill-select">
+                <option value="Auto">Auto (≤ 4×4)</option>
+                <option value="224">224 px</option>
+                <option value="320">320 px</option>
+                <option value="448">448 px</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 12px;">
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="crc-alpha-input">
+                <span>Grad-CAM Opacity</span>
+                <span id="crc-alpha-val">0.50</span>
+              </label>
+              <input type="range" id="crc-alpha-input" min="0.20" max="0.85" step="0.05" value="0.50" style="margin-top: 10px; accent-color: var(--color-primary-indigo);" oninput="document.getElementById('crc-alpha-val').textContent = parseFloat(this.value).toFixed(2)" />
+            </div>
+            <div class="control-group" style="margin-bottom: 0;">
+              <label class="control-label" for="crc-frac-input">
+                <span>Tumour Tile Share</span>
+                <span id="crc-frac-val">10%</span>
+              </label>
+              <input type="range" id="crc-frac-input" min="0.05" max="0.50" step="0.05" value="0.10" style="margin-top: 10px; accent-color: var(--color-primary-indigo);" oninput="document.getElementById('crc-frac-val').textContent = Math.round(this.value*100) + '%'" />
+            </div>
+          </div>
+
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 13px; cursor: pointer;">
+            <input type="checkbox" id="crc-force-check" style="width: 18px; height: 18px; accent-color: var(--color-primary-indigo);" />
+            <span>Force analysis on non-H&amp;E / grayscale images</span>
+          </label>
+
+          <button class="btn-primary" id="crc-run-btn" style="width: 100%;" onclick="runCrcAnalysis()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Analyze H&amp;E Tissue Now</span>
+          </button>
+
+          <div>
+            <div class="control-label" style="margin-bottom: 10px;">
+              <span>Or Try a CRC-VAL-HE-7K Sample</span>
+              <span style="font-size: 11px; color: var(--color-stone);">Click to analyze</span>
+            </div>
+            <div class="samples-grid" id="crc-samples-container"></div>
+          </div>
+        </aside>
+
+        
+        <section id="crc-results-panel" style="display: flex; flex-direction: column; gap: 24px;">
+          
+        </section>
+      </div>
+    </main>
+
+    
+    <main id="view-assistant" class="view-section" style="display: none;">
+      <div class="section-header-centered">
+        <span class="info-pill blue">CLINICAL COPILOT · MEDICAL &amp; HEALTH SCOPE ONLY</span>
+        <h1 class="section-headline">MedVisionAI Clinical Assistant</h1>
+        <p class="section-subtext">
+          Attach any Brain Tumor MRI or Colorectal Histopathology case to synthesize findings, compare deep vs. classical models, and interpret Grad-CAM or U-Net segmentation maps.
+        </p>
+      </div>
+
+      <div class="white-card" style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1px solid rgba(8,3,49,0.08);">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 280px;">
+            <label for="chat-case-select" style="font-size: 14px; font-weight: 500; white-space: nowrap;">Attached Case Context:</label>
+            <select id="chat-case-select" class="pill-select" style="max-width: 460px;">
+              <option value="latest">Latest Analyzed Case (Auto-Attach)</option>
+              <option value="none">No Case Attached (General Medical Q&amp;A)</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-outline" style="padding: 8px 14px; font-size: 12px;" onclick="sendQuickPrompt('Please explain the attached MedVisionAI analysis, including model consensus and uncertainty.')">Explain Attached Case</button>
+            <button class="btn-outline" style="padding: 8px 14px; font-size: 12px;" onclick="sendQuickPrompt('Compare Glioma, Meningioma, and Pituitary Adenoma on brain MRI and how MedVisionAI scores risk.')">Brain MRI Guide</button>
+            <button class="btn-outline" style="padding: 8px 14px; font-size: 12px;" onclick="sendQuickPrompt('What is the difference between normal colon mucosa, cancer-associated stroma, and colorectal adenocarcinoma?')">Colorectal H&amp;E Guide</button>
+          </div>
+        </div>
+
+        <div class="chat-window" id="chat-messages-box">
+          
+        </div>
+
+        <form onsubmit="handleChatSubmit(event)" style="display: flex; gap: 12px; align-items: center;">
+          <input type="text" id="chat-input-box" class="pill-input" placeholder="Ask about your Brain MRI or Colorectal H&E report, Grad-CAM heatmaps, or clinical triage..." required />
+          <button type="submit" class="btn-primary" style="flex-shrink: 0;">
+            <span>Send</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    
+    <main id="view-appointments" class="view-section" style="display: none;">
+      <div class="section-header-centered">
+        <span class="info-pill ember">HOSPITAL CONSULTATIONS &amp; PRIORITY TRIAGE</span>
+        <h1 class="section-headline">Specialist Referrals &amp; Triage Queue</h1>
+        <p class="section-subtext">
+          Request an in-person consultation with Neuro-Oncology, Neuroradiology, or Gastrointestinal Pathology. Urgent cases are automatically prioritized at the top of the coordinator queue.
+        </p>
+      </div>
+
+      
+      <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 32px;">
+        <button class="btn-primary" id="subtab-book-btn" onclick="switchApptSubtab('book')">1 · Book Specialist Consultation</button>
+        <button class="btn-outline" id="subtab-triage-btn" onclick="switchApptSubtab('triage')">2 · Hospital Coordinator Triage Queue</button>
+      </div>
+
+      <div id="appt-book-view">
+        <div class="grid-2" style="align-items: start;">
+          
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <h3 style="font-size: var(--text-heading-sm);">Select a Hospital Specialist</h3>
+            <div id="specialists-list-container" style="display: flex; flex-direction: column; gap: 14px;"></div>
+          </div>
+
+          
+          <div class="white-card">
+            <h3 style="font-size: var(--text-heading-sm); margin-bottom: 6px;">Consultation Request Details</h3>
+            <p style="font-size: var(--text-body-sm); color: var(--color-stone); margin-bottom: 20px;" id="selected-specialist-banner">
+              Selected: Consultant Neuro-Oncologist · Neuro-Oncology &amp; Neurosurgery
+            </p>
+
+            <form onsubmit="submitAppointmentRequest(event)">
+              <div class="control-group">
+                <label class="control-label" for="appt-urgency-select">Triage Urgency Priority</label>
+                <select id="appt-urgency-select" class="pill-select">
+                  <option value="urgent">Urgent (Within 48 hours) — Suspected high-grade malignancy / glioma / adenocarcinoma</option>
+                  <option value="soon">Soon (Within 2 weeks) — Abnormal lesion requiring specialist review</option>
+                  <option value="routine">Routine (Within 6 weeks) — Benign finding, second opinion, or follow-up</option>
+                </select>
+              </div>
+
+              <div class="grid-2" style="gap: 12px;">
+                <div class="control-group">
+                  <label class="control-label" for="appt-requester-input">Referring Clinician / Name</label>
+                  <input type="text" id="appt-requester-input" class="pill-input" placeholder="Dr. Rayenne Deradra" required />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="appt-contact-input">Phone or Clinical Email</label>
+                  <input type="text" id="appt-contact-input" class="pill-input" placeholder="clinician@hospital.org" required />
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap: 12px;">
+                <div class="control-group">
+                  <label class="control-label" for="appt-ref-input">Internal Patient Reference</label>
+                  <input type="text" id="appt-ref-input" class="pill-input" placeholder="MRN-2026-9042 (No patient names)" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="appt-pref-input">Preferred Window</label>
+                  <input type="text" id="appt-pref-input" class="pill-input" placeholder="e.g. Weekday mornings" />
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="appt-summary-input">
+                  <span>Attached MedVisionAI Case Summary (Image-Free)</span>
+                  <button type="button" class="btn-ghost" style="padding: 2px 8px; min-height: 24px; font-size: 12px; color: var(--color-primary-indigo);" onclick="fillLatestCaseIntoAppointment()">Auto-fill from latest scan</button>
+                </label>
+                <input type="text" id="appt-summary-input" class="pill-input" placeholder="Automatically populated when you click 'Refer to Specialist' on a result" />
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="appt-reason-input">Clinical Reason &amp; History</label>
+                <textarea id="appt-reason-input" class="card-textarea" placeholder="Describe relevant findings, symptoms, and questions for the specialist board..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%;">
+                <span>Submit Priority Consultation Request</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      
+      <div id="appt-triage-view" style="display: none;">
+        <div class="grid-4" style="margin-bottom: 24px;" id="triage-kpi-row"></div>
+        <div id="appointments-queue-container" style="display: flex; flex-direction: column; gap: 16px;"></div>
+      </div>
+    </main>
+
+    
+    <main id="view-benchmarks" class="view-section" style="display: none;">
+      <div class="section-header-centered">
+        <span class="info-pill">VALIDATION &amp; COMPARATIVE STUDY</span>
+        <h1 class="section-headline">Model Benchmarks &amp; Research Evidence</h1>
+        <p class="section-subtext">
+          Complete quantitative metrics and visual artifacts across the BRISC 2025 Brain Tumor MRI cohort (10,793 slices) and the NCT-CRC-HE-100K / CRC-VAL-HE-7K Colorectal Histopathology cohort.
+        </p>
+      </div>
+
+      <div id="benchmarks-content-container" style="display: flex; flex-direction: column; gap: 40px;">
+        
+      </div>
+    </main>
+
+    
+    <footer style="margin-top: var(--spacing-80); padding-top: var(--spacing-32); border-top: 1px solid rgba(8, 3, 49, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: var(--text-caption); color: var(--color-stone);">
+      <div>
+        <strong>MedVisionAI Clinical Intelligence Platform</strong> · Unified Brain Tumor MRI &amp; Colorectal Histopathology Workbench
+      </div>
+      <div>
+        Research prototype only · Not a regulated medical device · Do not use for unverified primary clinical diagnosis.
+      </div>
+    </footer>
+  </div>
+
+  <script src="/frontend/app.js"></script>
+</body>
+</html>

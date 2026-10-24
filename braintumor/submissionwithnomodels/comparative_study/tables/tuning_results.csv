@@ -1,0 +1,3 @@
+model,best_params,best_cv_score,baseline_test_f1,baseline_test_auc_roc,test_accuracy,test_precision,test_recall,test_f1,test_auc_roc,f1_gain_vs_baseline,auc_gain_vs_baseline
+Random Forest,"{""model__max_depth"": 16, ""model__min_samples_split"": 2, ""model__n_estimators"": 250}",0.986587747156545,0.9823468328141225,0.9930663424469646,0.9708333333333333,0.9772727272727273,0.986444212721585,0.9818370524130773,0.9930122577546632,-0.0005097804010452123,-5.408469230139268e-05
+Decision Tree,"{""model__max_depth"": null, ""model__min_samples_split"": 2}",0.9781472857595104,0.9775924960917144,0.9434079413635399,0.9641666666666666,0.9770833333333333,0.9781021897810219,0.9775924960917144,0.9434079413635399,0.0,0.0

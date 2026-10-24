@@ -1,0 +1,2 @@
+trained,model_name,strategy_name,backbones,tta_used,loss_name,accuracy,f1,eval_split,best_epoch,best_val_f1,epochs_ran,early_stopped
+True,efficientnet_b0,efficientnet_b0_fold_ensemble,"[""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0"", ""efficientnet_b0""]",False,weighted_focal_loss,0.993,0.9936006989274982,test,6,0.9932442775087593,6,True
